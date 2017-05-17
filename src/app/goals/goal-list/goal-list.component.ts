@@ -39,4 +39,8 @@ export class GoalListComponent {
 		this._goalsService.removeGoal(index);
 	}
 
+	toggleShowConfirm(index){
+		this._goalsService.toggleShowConfirm(index);
+	}
+
 }

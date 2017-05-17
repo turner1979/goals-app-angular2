@@ -22,7 +22,9 @@ export class GoalsService {
   };
 
 	getGoals(){
-    this.goals = JSON.parse(localStorage.getItem("goals"));
+    if(localStorage.getItem("goals")){
+      this.goals = JSON.parse(localStorage.getItem("goals"));
+    }
 		return this.goals;
 	}
 
@@ -41,6 +43,11 @@ export class GoalsService {
     this.goals[index].completed = !this.goals[index].completed;
     this.saveGoals();
     this.getGoalStats();
+  }
+
+  toggleShowConfirm(index){
+    this.goals[index].showConfirm = !this.goals[index].showConfirm;
+    this.saveGoals();
   }
 
   editGoal(goalName, index){
@@ -62,20 +69,22 @@ export class GoalsService {
 
   getGoalStats(){
 
-    this.goalStats.completed = 0;
-    this.goalStats.remaining = 0;
-    this.goalStats.total = 0;
+    if(this.goals){
+      this.goalStats.completed = 0;
+      this.goalStats.remaining = 0;
+      this.goalStats.total = 0;
 
-    this.goals.map((goal) => {
-      if(goal.completed === true){
-        this.goalStats.completed++;
-      }
-      else{
-        this.goalStats.remaining++;
-      }
-    });
+      this.goals.map((goal) => {
+        if(goal.completed === true){
+          this.goalStats.completed++;
+        }
+        else{
+          this.goalStats.remaining++;
+        }
+      });
 
-    this.goalStats.total = this.goals.length;
+      this.goalStats.total = this.goals.length;
+    }
 
     return this.goalStats;
 

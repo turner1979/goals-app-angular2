@@ -4,15 +4,20 @@
     <p>{{ goal.name }}</p>
   </div>
   <div class="card--goal__actions">
-    <a (click)="toggleComplete(i)">
-        <i *ngIf="goal.completed" class="fa fa-check-square-o fa-lg" aria-hidden="true"></i>
-        <i *ngIf="!goal.completed" class="fa fa-square-o fa-lg" aria-hidden="true"></i>
-    </a>
-    <a (click)="editGoal(i)"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-    <a (click)="removeGoal(i)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
-    <!--
-    <a (click)="removeGoal(i)"><i class="fa fa-check fa-lg" aria-hidden="true"></i></a>
-    <a (click)="toggleConfirm()"><i class="fa fa-times fa-lg" aria-hidden="true"></i></a>
-    -->
+
+    <div *ngIf="!goal.showConfirm">
+      <a (click)="toggleComplete(i)">
+          <i *ngIf="goal.completed" class="fa fa-check-square-o fa-lg" aria-hidden="true"></i>
+          <i *ngIf="!goal.completed" class="fa fa-square-o fa-lg" aria-hidden="true"></i>
+      </a>
+      <a (click)="editGoal(i)"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+      <a (click)="toggleShowConfirm(i)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+    </div>
+
+    <div *ngIf="goal.showConfirm">
+      <a (click)="removeGoal(i)"><i class="fa fa-check fa-lg" aria-hidden="true"></i></a>
+      <a (click)="toggleShowConfirm(i)"><i class="fa fa-times fa-lg" aria-hidden="true"></i></a>
+    </div>
+
   </div>
 </div>

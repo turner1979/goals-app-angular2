@@ -29,8 +29,9 @@ export class GoalFormComponent {
 
 			let goal:Goal = {
 				name: this.formState.goalName,
-				completed: false
-			}
+				completed: false,
+				showConfirm: false
+			};
 
 			this._goalsService.addGoal(goal);
 		}

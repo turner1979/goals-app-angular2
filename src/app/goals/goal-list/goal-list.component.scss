@@ -1,0 +1,26 @@
+.card--goal {
+  color: #fff;
+
+  .card--goal__name {
+  	float: left;
+  	width: 60%;
+  }
+
+  .card--goal__actions {
+  	float: left;
+  	width: 40%;
+    text-align: right;
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+
+      i {
+        margin-left: 0.5em;
+        color: #fff;
+      }
+    }
+
+  }
+
+}

@@ -1,4 +1,4 @@
-<form id="addGoalForm" class="clearfix" (ngSubmit)="addGoal()">
-  <input type="text" placeholder="Add a goal..." autoComplete="off" name="goalName" [(ngModel)]="goalName" />
-  <input type="submit" value="Add" />
+<form id="addGoalForm" class="clearfix" (ngSubmit)="onSubmit()">
+  <input type="text" placeholder="Add a goal..." autoComplete="off" name="goalName" [(ngModel)]="formState.goalName" />
+  <input type="submit" value="{{ formState.editMode === true ? 'Edit' : 'Add' }}" />
 </form>

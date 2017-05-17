@@ -10,21 +10,30 @@ import { GoalsService } from '../../shared/service/goals.service';
 
 export class GoalFormComponent {
 
-	public goalName:string = 'New Goal';
+	public formState;
 
 	constructor(private _goalsService:GoalsService){
 
 	}
 
-	addGoal(){
+	ngOnInit(){
+		this.formState = this._goalsService.getFormState();
+	}
 
-		let goal:Goal = {
-			name: this.goalName,
-			completed: false
+	onSubmit(){
+
+		if(this.formState.editMode){
+			this._goalsService.editGoal(this.formState.goalName, this.formState.goalIndex);
 		}
+		else{
 
-		this._goalsService.addGoal(goal);
+			let goal:Goal = {
+				name: this.formState.goalName,
+				completed: false
+			}
 
+			this._goalsService.addGoal(goal);
+		}
 	}
 
 }

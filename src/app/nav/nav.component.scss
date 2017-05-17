@@ -1,0 +1,36 @@
+$border-color : #fff;
+$active-bg-color: #fff;
+$active-text-color: #0099CC;
+
+.menu {
+  text-align: center;
+  margin-bottom: 1em;
+
+  a {
+    display: inline-block;
+    padding: 1em;
+    color: $border-color;
+    border: 1px solid $border-color;
+    border-right: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.75em;
+
+    &.active {
+      background: $active-bg-color;
+      color: $active-text-color;
+    }
+
+    &:first-of-type {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+
+    &:last-of-type {
+      border-right: 1px solid $border-color;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+  }
+
+}

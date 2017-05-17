@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Goal } from '../../shared/interface/goal';
+import { GoalsService } from '../../shared/service/goals.service';
 //import { config } from '../config';
 
 @Component({
@@ -10,10 +11,15 @@ import { Goal } from '../../shared/interface/goal';
 
 export class GoalListComponent {
 
-	public goals:Goal[] = [
-		{ name : 'Goal 1', completed: true },
-		{ name : 'Goal 2', completed: false },
-		{ name : 'Goal 3', completed: true }
-	];
+	constructor(private _goalsService:GoalsService){
+
+	}
+
+	public goals = this._goalsService.getGoals();
+	public goalStats = this._goalsService.getGoalStats();
+
+	removeGoal(index){
+		this._goalsService.removeGoal(index);
+	}
 
 }

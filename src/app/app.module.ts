@@ -15,6 +15,8 @@ import { GoalStatsComponent } from './goals/goal-stats/goal-stats.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { GoalsService } from './shared/service/goals.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,7 @@ import { FooterComponent } from './footer/footer.component';
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [GoalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

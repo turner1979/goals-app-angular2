@@ -1,0 +1,19 @@
+
+<div *ngFor="let goal of goals" class="card--goal clearfix">
+  <div class="card--goal__name">
+    <p>{{ goal.name }}</p>
+  </div>
+  <div class="card--goal__actions">
+    <a href="#">
+        <i *ngIf="goal.completed" class="fa fa-check-square-o fa-lg" aria-hidden="true"></i>
+        <i *ngIf="!goal.completed" class="fa fa-square-o fa-lg" aria-hidden="true"></i>
+    </a>
+    <a href="#"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+    <a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+
+    <!--
+    <a href=""><i class="fa fa-check fa-lg" aria-hidden="true"></i></a>
+    <a href=""><i class="fa fa-times fa-lg" aria-hidden="true"></i></a>
+  -->
+  </div>
+</div>

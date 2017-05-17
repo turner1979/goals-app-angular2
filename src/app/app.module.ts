@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { GoalsComponent } from './goals/goals.component';
+import { GoalFormComponent } from './goals/goal-form/goal-form.component';
+import { GoalListComponent } from './goals/goal-list/goal-list.component';
+import { GoalStatsComponent } from './goals/goal-stats/goal-stats.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 
@@ -18,6 +21,9 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     AboutComponent,
     GoalsComponent,
+    GoalFormComponent,
+    GoalListComponent,
+    GoalStatsComponent,
     NavComponent,
     FooterComponent
   ],

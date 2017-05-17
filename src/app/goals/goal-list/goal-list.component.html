@@ -1,19 +1,18 @@
 
-<div *ngFor="let goal of goals; let i = index;" class="card--goal clearfix">
+<div *ngFor="let goal of goals; let i = index;" class="card--goal clearfix" [ngClass]="goal.completed ? 'completed' : ''">
   <div class="card--goal__name">
     <p>{{ goal.name }}</p>
   </div>
   <div class="card--goal__actions">
-    <a href="#">
+    <a (click)="toggleComplete(i)">
         <i *ngIf="goal.completed" class="fa fa-check-square-o fa-lg" aria-hidden="true"></i>
         <i *ngIf="!goal.completed" class="fa fa-square-o fa-lg" aria-hidden="true"></i>
     </a>
     <a (click)="editGoal(i)"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
     <a (click)="removeGoal(i)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
-
     <!--
-    <a href=""><i class="fa fa-check fa-lg" aria-hidden="true"></i></a>
-    <a href=""><i class="fa fa-times fa-lg" aria-hidden="true"></i></a>
-  -->
+    <a (click)="removeGoal(i)"><i class="fa fa-check fa-lg" aria-hidden="true"></i></a>
+    <a (click)="toggleConfirm()"><i class="fa fa-times fa-lg" aria-hidden="true"></i></a>
+    -->
   </div>
 </div>

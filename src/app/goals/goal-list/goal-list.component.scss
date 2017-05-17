@@ -23,4 +23,10 @@
 
   }
 
+  &.completed {
+    .card--goal__name {
+      text-decoration: line-through;
+    }
+  }
+
 }

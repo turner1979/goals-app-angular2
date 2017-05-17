@@ -25,6 +25,10 @@ export class GoalListComponent {
 		this.formState = this._goalsService.getFormState();
 	}
 
+	toggleComplete(index){
+		this._goalsService.toggleComplete(index);
+	}
+
 	editGoal(index){
 		this._goalsService.setEditMode(true);
 		this._goalsService.setGoalIndex(index);

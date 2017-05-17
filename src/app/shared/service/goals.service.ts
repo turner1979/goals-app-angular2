@@ -20,9 +20,18 @@ export class GoalsService {
 	}
 
   addGoal(goal){
-    this.goals.push(goal);
+
+    if(this.formState.goalName){
+      this.goals.push(goal);
+      this.saveGoals();
+      this.formState.goalName = '';
+    }
+
+  }
+
+  toggleComplete(index){
+    this.goals[index].completed = !this.goals[index].completed;
     this.saveGoals();
-    this.formState.goalName = '';
   }
 
   editGoal(goalName, index){

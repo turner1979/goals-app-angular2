@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Goal } from '../interface/goal';
+import { GoalStats } from '../interface/goal-stats';
 
 @Injectable()
 
@@ -14,6 +15,12 @@ export class GoalsService {
     goalIndex: 0
   };
 
+  private goalStats:GoalStats = {
+    completed: 0,
+    remaining: 0,
+    total: 0
+  };
+
 	getGoals(){
     this.goals = JSON.parse(localStorage.getItem("goals"));
 		return this.goals;
@@ -25,6 +32,7 @@ export class GoalsService {
       this.goals.push(goal);
       this.saveGoals();
       this.formState.goalName = '';
+      this.getGoalStats();
     }
 
   }
@@ -32,6 +40,7 @@ export class GoalsService {
   toggleComplete(index){
     this.goals[index].completed = !this.goals[index].completed;
     this.saveGoals();
+    this.getGoalStats();
   }
 
   editGoal(goalName, index){
@@ -48,26 +57,27 @@ export class GoalsService {
     this.goals.splice(index, 1);
     this.saveGoals();
     this.resetFormState();
+    this.getGoalStats();
   }
 
   getGoalStats(){
 
-    let goalStats = {
-      completed: 0,
-      remaining: 0,
-      total: this.goals.length
-    }
+    this.goalStats.completed = 0;
+    this.goalStats.remaining = 0;
+    this.goalStats.total = 0;
 
     this.goals.map((goal) => {
       if(goal.completed === true){
-        goalStats.completed++;
+        this.goalStats.completed++;
       }
       else{
-        goalStats.remaining++;
+        this.goalStats.remaining++;
       }
     });
 
-    return goalStats;
+    this.goalStats.total = this.goals.length;
+
+    return this.goalStats;
 
   }
 
